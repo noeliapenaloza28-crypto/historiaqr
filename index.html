@@ -23,7 +23,7 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 </style>
 </head>
 <body>
-<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos</p></header>
+<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos · v3 con sincronización</p></header>
 <main>
 <section class="card"><h2>1. Actividad actual</h2>
 <div class="row"><div><label>Grupo</label><select id="group"><option>3G</option><option>3H</option></select></div>
@@ -46,6 +46,31 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 <label>Observaciones</label><textarea id="notes" placeholder="Opcional"></textarea>
 <button id="saveBtn" class="primary">Guardar y seguir</button></section>
 
+
+<section class="card">
+  <h2>☁️ Sincronización con Google Sheets</h2>
+  <div class="muted">
+    Configúrala una sola vez. Sin internet, los registros siguen guardándose en el teléfono.
+    Cuando tengas Wi‑Fi, pulsa <b>Sincronizar ahora</b>.
+  </div>
+
+  <label>URL de la aplicación web de Google Apps Script</label>
+  <input id="syncUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+
+  <label>Clave de sincronización</label>
+  <input id="syncToken" type="password" placeholder="La misma clave configurada en Apps Script">
+
+  <button id="saveSyncConfigBtn" class="secondary" style="margin-top:8px">Guardar configuración</button>
+
+  <div style="margin-top:12px" class="row">
+    <div><div class="muted">Pendientes de enviar</div><div id="pendingCount" style="font-size:28px;font-weight:900">0</div></div>
+    <div><div class="muted">Enviados desde este teléfono</div><div id="sentCount" style="font-size:28px;font-weight:900">0</div></div>
+  </div>
+
+  <button id="syncBtn" class="primary" style="margin-top:10px">☁️ Sincronizar ahora</button>
+  <button id="resendBtn" class="secondary" style="margin-top:8px">↻ Reenviar todos</button>
+  <div id="syncStatus" class="status hidden"></div>
+</section>
 <section class="card"><h2>Registros</h2><div class="muted"><span id="recordCount">0</span> guardados en este dispositivo.</div>
 <div class="actions" style="margin-top:10px"><button id="exportBtn" class="secondary">⬇️ Exportar CSV</button><button id="backupBtn" class="secondary">💾 Respaldo JSON</button></div>
 <button id="clearBtn" class="secondary danger" style="margin-top:8px">Borrar todos los registros</button>

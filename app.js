@@ -3,8 +3,19 @@ let currentStudent=null,selectedScore=null,stream=null,scanTimer=null;
 const $=id=>document.getElementById(id);
 $('date').value=new Date().toISOString().slice(0,10);
 
-function loadRecords(){try{return JSON.parse(localStorage.getItem('historia_records_v2')||'[]')}catch{return[]}}
-function saveRecords(r){localStorage.setItem('historia_records_v2',JSON.stringify(r))}
+const STORAGE_KEY='historia_records_v3';
+const OLD_STORAGE_KEY='historia_records_v2';
+function migrateRecords(){
+  if(localStorage.getItem(STORAGE_KEY)) return;
+  try{
+    const old=JSON.parse(localStorage.getItem(OLD_STORAGE_KEY)||'[]');
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(old.map(r=>({...r,sync_state:r.sync_state||'pending'}))));
+  }catch{
+    localStorage.setItem(STORAGE_KEY,'[]');
+  }
+}
+function loadRecords(){migrateRecords();try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch{return[]}}
+function saveRecords(r){localStorage.setItem(STORAGE_KEY,JSON.stringify(r))}
 function renderScores(){
  const vals=[1,.9,.8,.7,.6,.5,.4,.3,.2,.1,0];
  $('scoreGrid').innerHTML='';
@@ -49,7 +60,7 @@ $('saveBtn').onclick=()=>{
  const r=loadRecords(),now=new Date();
  r.push({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),timestamp:now.toISOString(),fecha:$('date').value,
  grupo:currentStudent.group,codigo:currentStudent.code,alumno:currentStudent.name,actividad:activity,valor:st==='Ausente'?'':selectedScore.toFixed(1),
- estado:st,participacion:$('participation').value,conducta:$('conduct').value,observaciones:$('notes').value.trim()});
+ estado:st,participacion:$('participation').value,conducta:$('conduct').value,observaciones:$('notes').value.trim(),sync_state:'pending'});
  saveRecords(r);renderRecords();
  currentStudent=null;$('studentBox').classList.add('hidden');$('evaluationCard').classList.add('hidden');
  setTimeout(()=>{ if('vibrate' in navigator) navigator.vibrate(50); },20);
@@ -59,7 +70,82 @@ function dl(n,c,t){const blob=new Blob([c],{type:t}),a=document.createElement('a
 $('exportBtn').onclick=()=>{const r=loadRecords();if(!r.length){alert('No hay registros.');return}const hs=['timestamp','fecha','grupo','codigo','alumno','actividad','valor','estado','participacion','conducta','observaciones'];
  const csv='\ufeff'+hs.join(',')+'\n'+r.map(x=>hs.map(h=>esc(x[h])).join(',')).join('\n');dl(`historia_registros_${new Date().toISOString().slice(0,10)}.csv`,csv,'text/csv;charset=utf-8')};
 $('backupBtn').onclick=()=>dl(`historia_respaldo_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(loadRecords(),null,2),'application/json');
-$('clearBtn').onclick=()=>{if(confirm('¿Borrar TODOS los registros guardados en este dispositivo?')){localStorage.removeItem('historia_records_v2');renderRecords()}};
-function renderRecords(){const r=loadRecords();$('recordCount').textContent=r.length;$('recentRows').innerHTML=r.slice(-10).reverse().map(x=>`<tr><td>${x.fecha}</td><td>${x.alumno}</td><td>${x.actividad}</td><td>${x.valor||'A'}</td></tr>`).join('')}
+$('clearBtn').onclick=()=>{if(confirm('¿Borrar TODOS los registros guardados en este dispositivo?')){localStorage.removeItem(STORAGE_KEY);renderRecords();renderSyncCounts()}};
+function renderRecords(){
+  const r=loadRecords();
+  $('recordCount').textContent=r.length;
+  $('recentRows').innerHTML=r.slice(-10).reverse().map(x=>`<tr><td>${x.fecha}</td><td>${x.alumno}</td><td>${x.actividad}</td><td>${x.valor||'A'}</td></tr>`).join('');
+  renderSyncCounts();
+}
+
+// ---- Sincronización Google Sheets ----
+const SYNC_URL_KEY='historia_sync_url_v1';
+const SYNC_TOKEN_KEY='historia_sync_token_v1';
+
+function loadSyncConfig(){
+  $('syncUrl').value=localStorage.getItem(SYNC_URL_KEY)||'';
+  $('syncToken').value=localStorage.getItem(SYNC_TOKEN_KEY)||'';
+}
+function saveSyncConfig(){
+  const url=$('syncUrl').value.trim();
+  const token=$('syncToken').value.trim();
+  if(!url || !token){alert('Escribe la URL y la clave de sincronización.');return}
+  localStorage.setItem(SYNC_URL_KEY,url);
+  localStorage.setItem(SYNC_TOKEN_KEY,token);
+  showSyncStatus('Configuración guardada en este teléfono.');
+}
+function showSyncStatus(msg){
+  $('syncStatus').textContent=msg;
+  $('syncStatus').classList.remove('hidden');
+}
+function renderSyncCounts(){
+  const r=loadRecords();
+  const pending=r.filter(x=>(x.sync_state||'pending')!=='sent').length;
+  const sent=r.filter(x=>x.sync_state==='sent').length;
+  if($('pendingCount')) $('pendingCount').textContent=pending;
+  if($('sentCount')) $('sentCount').textContent=sent;
+}
+async function sendBatch(records,force=false){
+  const url=localStorage.getItem(SYNC_URL_KEY)||'';
+  const token=localStorage.getItem(SYNC_TOKEN_KEY)||'';
+  if(!url || !token){showSyncStatus('Primero guarda la URL y la clave.');return false}
+  if(!navigator.onLine){showSyncStatus('No hay conexión. Los registros siguen guardados en el teléfono.');return false}
+
+  const toSend=force?records:records.filter(r=>(r.sync_state||'pending')!=='sent');
+  if(!toSend.length){showSyncStatus('No hay registros pendientes.');return true}
+
+  $('syncBtn').disabled=true;
+  $('syncBtn').textContent='Enviando…';
+  try{
+    await fetch(url,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({
+        token,
+        app:'historia-qr-v3',
+        sent_at:new Date().toISOString(),
+        records:toSend
+      })
+    });
+    const ids=new Set(toSend.map(x=>x.id));
+    const when=new Date().toISOString();
+    saveRecords(records.map(r=>ids.has(r.id)?{...r,sync_state:'sent',sync_sent_at:when}:r));
+    renderRecords();
+    showSyncStatus(`Envío realizado: ${toSend.length} registro(s).`);
+    return true;
+  }catch(e){
+    showSyncStatus('No se pudo enviar. Los registros siguen guardados para intentar después.');
+    return false;
+  }finally{
+    $('syncBtn').disabled=false;
+    $('syncBtn').textContent='☁️ Sincronizar ahora';
+  }
+}
+$('saveSyncConfigBtn').onclick=saveSyncConfig;
+$('syncBtn').onclick=()=>sendBatch(loadRecords(),false);
+$('resendBtn').onclick=()=>{if(confirm('¿Reenviar todos los registros? El servidor ignora duplicados por ID.'))sendBatch(loadRecords(),true)};
+loadSyncConfig();
+
 renderScores();renderRecords();
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
