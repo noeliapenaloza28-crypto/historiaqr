@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f2937"><link rel="manifest" href="manifest.webmanifest">
+<title>Historia | Registro QR</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--text:#111827;--muted:#6b7280;--line:#d1d5db;--accent:#1f2937}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
+header{background:var(--accent);color:white;padding:18px 16px} header h1{font-size:20px;margin:0} header p{font-size:13px;opacity:.8;margin:4px 0 0}
+main{max-width:720px;margin:auto;padding:14px}.card{background:white;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px #00000010}
+label{display:block;font-size:13px;font-weight:700;margin:10px 0 6px}input,select,textarea,button{font:inherit}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}textarea{min-height:72px}
+.row,.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.score{border:0;border-radius:12px;padding:14px 4px;font-weight:900}.score.sel{outline:4px solid #111827}
+.green{background:#86efac}.yellow{background:#fde047}.orange{background:#fdba74}.red{background:#fca5a5}
+.primary{width:100%;padding:14px;border:0;border-radius:12px;background:#111827;color:white;font-weight:800}
+.secondary{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:white;font-weight:700}
+.danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}.hidden{display:none!important}.student{font-size:21px;font-weight:900;margin-top:10px}
+.muted{font-size:13px;color:var(--muted)}.status{margin-top:10px;padding:10px;border-radius:10px;background:#ecfeff;font-size:13px}
+video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:7px;border-bottom:1px solid #e5e7eb;text-align:left}
+@media(max-width:500px){.row,.actions{grid-template-columns:1fr}.score-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos</p></header>
+<main>
+<section class="card"><h2>1. Actividad actual</h2>
+<div class="row"><div><label>Grupo</label><select id="group"><option>3G</option><option>3H</option></select></div>
+<div><label>Fecha</label><input id="date" type="date"></div></div>
+<label>Actividad</label><input id="activity" placeholder="Ej. Apunte: el feudalismo"></section>
+
+<section class="card"><h2>2. Alumno</h2><div class="actions">
+<button id="scanBtn" class="secondary">📷 Escanear QR</button><button id="manualBtn" class="secondary">⌨️ Código / lista</button></div>
+<div id="scannerWrap" class="hidden" style="margin-top:10px"><video id="video" playsinline></video><button id="stopScanBtn" class="secondary">Detener cámara</button></div>
+<div id="manualWrap" class="hidden">
+<label>Alumno</label><select id="studentSelect"></select>
+<button id="loadStudentBtn" class="secondary" style="margin-top:8px">Cargar alumno</button></div>
+<div id="studentBox" class="hidden"><div class="student" id="studentName"></div><div class="muted" id="studentMeta"></div></div>
+<div id="scanStatus" class="status hidden"></div></section>
+
+<section id="evaluationCard" class="card hidden"><h2>3. Evaluación</h2><label>Calificación</label><div class="score-grid" id="scoreGrid"></div>
+<label>Estado del trabajo</label><select id="workStatus"><option value="Realizado">Trabajo realizado</option><option value="Incompleto">Trabajo incompleto</option><option value="No trabajó">No trabajó</option><option value="Ausente">Ausente</option></select>
+<div class="row"><div><label>Participación</label><select id="participation"><option value="">Sin registro especial</option><option>Buena</option><option>Regular</option><option>Sin participación</option></select></div>
+<div><label>Conducta</label><select id="conduct"><option value="">Sin registro especial</option><option>Adecuada</option><option>Llamado de atención</option><option>Incidencia</option></select></div></div>
+<label>Observaciones</label><textarea id="notes" placeholder="Opcional"></textarea>
+<button id="saveBtn" class="primary">Guardar y seguir</button></section>
+
+<section class="card"><h2>Registros</h2><div class="muted"><span id="recordCount">0</span> guardados en este dispositivo.</div>
+<div class="actions" style="margin-top:10px"><button id="exportBtn" class="secondary">⬇️ Exportar CSV</button><button id="backupBtn" class="secondary">💾 Respaldo JSON</button></div>
+<button id="clearBtn" class="secondary danger" style="margin-top:8px">Borrar todos los registros</button>
+<div style="overflow:auto;margin-top:12px"><table><thead><tr><th>Fecha</th><th>Alumno</th><th>Actividad</th><th>Valor</th></tr></thead><tbody id="recentRows"></tbody></table></div></section>
+</main><script src="app.js"></script></body></html>

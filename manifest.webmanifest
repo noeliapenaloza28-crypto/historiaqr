@@ -1,0 +1,9 @@
+{
+  "name": "Historia - Registro QR 3G y 3H",
+  "short_name": "Historia QR",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#1f2937",
+  "icons": []
+}
