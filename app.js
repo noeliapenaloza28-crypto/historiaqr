@@ -70,7 +70,16 @@ function dl(n,c,t){const blob=new Blob([c],{type:t}),a=document.createElement('a
 $('exportBtn').onclick=()=>{const r=loadRecords();if(!r.length){alert('No hay registros.');return}const hs=['timestamp','fecha','grupo','codigo','alumno','actividad','valor','estado','participacion','conducta','observaciones'];
  const csv='\ufeff'+hs.join(',')+'\n'+r.map(x=>hs.map(h=>esc(x[h])).join(',')).join('\n');dl(`historia_registros_${new Date().toISOString().slice(0,10)}.csv`,csv,'text/csv;charset=utf-8')};
 $('backupBtn').onclick=()=>dl(`historia_respaldo_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(loadRecords(),null,2),'application/json');
-$('clearBtn').onclick=()=>{if(confirm('¿Borrar TODOS los registros guardados en este dispositivo?')){localStorage.removeItem(STORAGE_KEY);renderRecords();renderSyncCounts()}};
+$('clearBtn').onclick=()=>{
+  if(confirm('¿Borrar TODOS los registros guardados en este dispositivo?')){
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(OLD_STORAGE_KEY);
+    localStorage.setItem(STORAGE_KEY,'[]');
+    renderRecords();
+    renderSyncCounts();
+    alert('Todos los registros locales fueron eliminados. La configuración de sincronización se conservó.');
+  }
+};
 function renderRecords(){
   const r=loadRecords();
   $('recordCount').textContent=r.length;
