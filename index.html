@@ -19,11 +19,22 @@ input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);borde
 .danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}.hidden{display:none!important}.student{font-size:21px;font-weight:900;margin-top:10px}
 .muted{font-size:13px;color:var(--muted)}.status{margin-top:10px;padding:10px;border-radius:10px;background:#ecfeff;font-size:13px}
 video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:7px;border-bottom:1px solid #e5e7eb;text-align:left}
+
+.history-list{display:grid;gap:8px;margin-top:10px}
+.history-item{border:1px solid #e5e7eb;border-radius:12px;padding:10px;background:#fafafa}
+.history-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.history-title{font-weight:800;font-size:14px}
+.history-meta{font-size:12px;color:var(--muted);margin-top:3px}
+.history-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.mini{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 9px;font-size:12px;font-weight:700}
+.late{background:#fff7ed;border-color:#fdba74}
+.edit-banner{padding:10px;border-radius:10px;background:#fff7ed;border:1px solid #fdba74;margin-bottom:10px;font-size:13px;font-weight:700}
+
 @media(max-width:500px){.row,.actions{grid-template-columns:1fr}.score-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
-<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos · v3.1 con sincronización</p></header>
+<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos · v3.2 · edición de entregas</p></header>
 <main>
 <section class="card"><h2>1. Actividad actual</h2>
 <div class="row"><div><label>Grupo</label><select id="group"><option>3G</option><option>3H</option></select></div>
@@ -39,12 +50,24 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 <div id="studentBox" class="hidden"><div class="student" id="studentName"></div><div class="muted" id="studentMeta"></div></div>
 <div id="scanStatus" class="status hidden"></div></section>
 
-<section id="evaluationCard" class="card hidden"><h2>3. Evaluación</h2><label>Calificación</label><div class="score-grid" id="scoreGrid"></div>
-<label>Estado del trabajo</label><select id="workStatus"><option value="Realizado">Trabajo realizado</option><option value="Incompleto">Trabajo incompleto</option><option value="No trabajó">No trabajó</option><option value="Ausente">Ausente</option></select>
+<section id="historyCard" class="card hidden">
+  <h2 style="margin-top:0">📂 Trabajos anteriores</h2>
+  <div class="muted">Puedes corregir un registro o registrar una entrega tardía sin crear un trabajo duplicado.</div>
+  <div id="historyList" class="history-list"></div>
+</section>
+
+<section id="evaluationCard" class="card hidden"><h2>3. Evaluación</h2>
+<div id="editBanner" class="edit-banner hidden">✏️ Estás modificando un registro anterior. Al guardar se actualizará el mismo registro.</div>
+<label>Calificación</label><div class="score-grid" id="scoreGrid"></div>
+<label>Estado del trabajo</label><select id="workStatus"><option value="Realizado">Trabajo realizado</option><option value="Incompleto">Trabajo incompleto</option><option value="No trabajó">No trabajó</option><option value="Entrega tardía">Entrega tardía</option><option value="Ausente">Ausente</option></select>
+<div id="deliveryDateWrap" class="hidden">
+  <label>Fecha de entrega tardía</label>
+  <input id="deliveryDate" type="date">
+</div>
 <div class="row"><div><label>Participación</label><select id="participation"><option value="">Sin registro especial</option><option>Buena</option><option>Regular</option><option>Sin participación</option></select></div>
 <div><label>Conducta</label><select id="conduct"><option value="">Sin registro especial</option><option>Adecuada</option><option>Llamado de atención</option><option>Incidencia</option></select></div></div>
 <label>Observaciones</label><textarea id="notes" placeholder="Opcional"></textarea>
-<button id="saveBtn" class="primary">Guardar y seguir</button></section>
+<button id="saveBtn" class="primary">Guardar y seguir</button><button id="cancelEditBtn" class="secondary hidden" style="margin-top:8px">Cancelar edición</button></section>
 
 
 <section class="card">

@@ -1,5 +1,7 @@
 const STUDENTS = [{"code": "3G-01", "group": "3G", "name": "AGUILAR PLACIDO MARIA FERNANDA"}, {"code": "3G-02", "group": "3G", "name": "ANGELES VALDEZ VICTORIA JULISA"}, {"code": "3G-03", "group": "3G", "name": "AVALOS CASTILLO DEREK"}, {"code": "3G-04", "group": "3G", "name": "AYALA MONDRAGON DORYAN MICHEL"}, {"code": "3G-05", "group": "3G", "name": "CAMACHO MACIAS WILLIAM URIEL"}, {"code": "3G-06", "group": "3G", "name": "CAMPOS MOSSO XIMENA ZOE"}, {"code": "3G-07", "group": "3G", "name": "CASTILLO PIMENTEL JUAN ELIAS"}, {"code": "3G-08", "group": "3G", "name": "CASTRO ZAYAS JOSE EMILIANO"}, {"code": "3G-09", "group": "3G", "name": "COLIN REYES LIZETH ABIGAIL"}, {"code": "3G-10", "group": "3G", "name": "CONTRERAS MORAN CARLOS EMILIO"}, {"code": "3G-11", "group": "3G", "name": "CRUZ CONTRERAS SANTIAGO"}, {"code": "3G-12", "group": "3G", "name": "DE LEON GARCIA SOPHIA ELIZABETH"}, {"code": "3G-13", "group": "3G", "name": "DIAZ ARCOS INGRID ITZAYETZI"}, {"code": "3G-14", "group": "3G", "name": "DIAZ CHAVEZ ARTURO"}, {"code": "3G-15", "group": "3G", "name": "FLORES TAPIA IVAN ARTURO"}, {"code": "3G-16", "group": "3G", "name": "GONZALEZ UNBE ALEJANDRO"}, {"code": "3G-17", "group": "3G", "name": "HIDALGO GONZALEZ GABRIEL"}, {"code": "3G-18", "group": "3G", "name": "JAIME GARCIA DANIELA"}, {"code": "3G-19", "group": "3G", "name": "JIMENEZ GALVAN GLORIA ITZA"}, {"code": "3G-20", "group": "3G", "name": "MARTINEZ ORTIZ LUZ CLARITA"}, {"code": "3G-21", "group": "3G", "name": "NOLASCO FERNANDEZ HAILE ALAIN"}, {"code": "3G-22", "group": "3G", "name": "OSORIO VILLICANA ANA LAURA"}, {"code": "3G-23", "group": "3G", "name": "PERALTA DIAZ NATALIA"}, {"code": "3G-24", "group": "3G", "name": "REYES CARCIA JOSE DITTER"}, {"code": "3G-25", "group": "3G", "name": "RODEA CIRA LUNA YOHUALLI"}, {"code": "3G-26", "group": "3G", "name": "RODRIGUEZ ESTRADA GAEL ALESSANDRO"}, {"code": "3G-27", "group": "3G", "name": "ROLDAN BEJARANO MELISA"}, {"code": "3G-28", "group": "3G", "name": "ROMERO MARTINEZ MARIEL AKETZALLI"}, {"code": "3G-29", "group": "3G", "name": "SANCHEZ MORALES SKIRLA SKARLETH"}, {"code": "3G-30", "group": "3G", "name": "VALDES ROMERO XIMENA"}, {"code": "3G-31", "group": "3G", "name": "VALDEZ BERMUDEZ HECTOR DANIEL"}, {"code": "3G-32", "group": "3G", "name": "VALENCIA DE LA CRUZ JOSEPH ALEXANDER"}, {"code": "3G-33", "group": "3G", "name": "VALTIERRA CHAVEZ MAXIMILIANO"}, {"code": "3G-34", "group": "3G", "name": "VARGAS SANCHEZ SHARON VALERIA"}, {"code": "3G-35", "group": "3G", "name": "VAZQUEZ PARRA MEREDITH"}, {"code": "3H-01", "group": "3H", "name": "DE LEON MORALES LUIS LEONEL"}, {"code": "3H-02", "group": "3H", "name": "ALCALA LEON ROSA IVONNE"}, {"code": "3H-03", "group": "3H", "name": "ANTONIO GABRIEL NAYIBET ZURISADAY"}, {"code": "3H-04", "group": "3H", "name": "ARCE VARGAS STEPHANIA"}, {"code": "3H-05", "group": "3H", "name": "ARELLANO CONTRERAS FATIMA AILYN"}, {"code": "3H-06", "group": "3H", "name": "DIAZ GARDUNO ARLETTE JANETH"}, {"code": "3H-07", "group": "3H", "name": "GARCIA LOPEZ EDUARDO SANTIAGO"}, {"code": "3H-08", "group": "3H", "name": "GARCIA MADERA XIMENA RUBY"}, {"code": "3H-09", "group": "3H", "name": "GARRIDO BERNAL SOFIA"}, {"code": "3H-10", "group": "3H", "name": "GONZALEZ LEE XIMENA GUADALUPE"}, {"code": "3H-11", "group": "3H", "name": "GONZALEZ VALLE YESENIA DENISSE"}, {"code": "3H-12", "group": "3H", "name": "GRANADOS DE LA CRUZ IKER EZEQUIEL"}, {"code": "3H-13", "group": "3H", "name": "HERNANDEZ ALVAREZ ABRIL"}, {"code": "3H-14", "group": "3H", "name": "ISIDRO BERMUDEZ ABRIL NAYARA"}, {"code": "3H-15", "group": "3H", "name": "JIMENEZ VELEZ DANTE"}, {"code": "3H-16", "group": "3H", "name": "JUAN SEGUNDO MARIA DE LOS ANGELES"}, {"code": "3H-17", "group": "3H", "name": "MARTINEZ LOPEZ DULCE CAMILA"}, {"code": "3H-18", "group": "3H", "name": "MENDOZA CRUZ JONATHAN MICHELLE"}, {"code": "3H-19", "group": "3H", "name": "MORALES GARCIA SOFIA FERNANDA"}, {"code": "3H-20", "group": "3H", "name": "MUNOZ GARCIA IKER RAFAEL"}, {"code": "3H-21", "group": "3H", "name": "ORTA TRUJILLO COLE JEFF"}, {"code": "3H-22", "group": "3H", "name": "ORTIZ GUADARRAMA RODRIGO"}, {"code": "3H-23", "group": "3H", "name": "PALMA HERNANDEZ ALIKA EVOLET"}, {"code": "3H-24", "group": "3H", "name": "PENA TORRES BRYAN MATEO"}, {"code": "3H-25", "group": "3H", "name": "REYES BANDA ARATH ITZAE"}, {"code": "3H-26", "group": "3H", "name": "RIVERA AGUIRRE IAN MATTEO"}, {"code": "3H-27", "group": "3H", "name": "ROMERO LAGUNAS GABRIEL ALEJANDRO"}, {"code": "3H-28", "group": "3H", "name": "RUIZ VILLAFANA XIMENA"}, {"code": "3H-29", "group": "3H", "name": "SALAZAR MORENO SANTIAGO"}, {"code": "3H-30", "group": "3H", "name": "TAPIA VAZQUEZ FERNANDO AGUSTIN"}, {"code": "3H-31", "group": "3H", "name": "URIBE GARCIA LUIS JESUS"}, {"code": "3H-32", "group": "3H", "name": "VI-CHIS FLORENCIO JOCELYN STEPHANIA"}, {"code": "3H-33", "group": "3H", "name": "ZARZA SANTILLAN MICHEL EMILIANO"}, {"code": "3H-34", "group": "3H", "name": "GOMORA MARTINEZ MARIA JOSE"}, {"code": "3H-35", "group": "3H", "name": "ESQUIVEL CERA FATIMA SELENE"}];
 let currentStudent=null,selectedScore=null,stream=null,scanTimer=null;
+let editingRecordId=null;
+let editReturnContext=null;
 const $=id=>document.getElementById(id);
 $('date').value=new Date().toISOString().slice(0,10);
 
@@ -32,12 +34,126 @@ function hideStatus(){$('scanStatus').classList.add('hidden')}
 function setStudent(code){
  const s=STUDENTS.find(x=>x.code.toUpperCase()===String(code).trim().toUpperCase());
  if(!s){status('Código no encontrado.');return}
- currentStudent=s;$('studentName').textContent=s.name;$('studentMeta').textContent=`${s.group} · ${s.code}`;
+ currentStudent=s;
+ $('studentName').textContent=s.name;
+ $('studentMeta').textContent=`${s.group} · ${s.code}`;
  $('group').value=s.group;populateStudents();$('studentSelect').value=s.code;
- $('studentBox').classList.remove('hidden');$('evaluationCard').classList.remove('hidden');
- selectedScore=null;document.querySelectorAll('.score').forEach(x=>x.classList.remove('sel'));
- $('workStatus').value='Realizado';$('participation').value='';$('conduct').value='';$('notes').value='';hideStatus()
+ $('studentBox').classList.remove('hidden');
+ $('evaluationCard').classList.remove('hidden');
+ $('historyCard').classList.remove('hidden');
+ if(!editingRecordId){
+   selectedScore=null;
+   document.querySelectorAll('.score').forEach(x=>x.classList.remove('sel'));
+   $('workStatus').value='Realizado';$('participation').value='';$('conduct').value='';$('notes').value='';
+   $('deliveryDate').value='';
+   toggleDeliveryDate();
+ }
+ renderStudentHistory(s.code);
+ hideStatus();
 }
+
+function renderStudentHistory(code){
+  const items=loadRecords()
+    .filter(r=>r.codigo===code)
+    .sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||'')) || String(b.timestamp||'').localeCompare(String(a.timestamp||'')));
+
+  if(!items.length){
+    $('historyList').innerHTML='<div class="muted">Todavía no hay trabajos registrados para este alumno.</div>';
+    return;
+  }
+
+  $('historyList').innerHTML=items.map(r=>{
+    const val=(r.valor===''||r.valor==null)?'A':r.valor;
+    const late=r.estado==='Entrega tardía';
+    const delivery=late&&r.fecha_entrega?` · Entregó: ${r.fecha_entrega}`:'';
+    const lateBtn=(r.estado==='No trabajó'||String(r.valor)==='0.0'||String(r.valor)==='0')
+      ? `<button class="mini late" onclick="editRecord('${r.id}',true)">📦 Entregó tarde</button>`:'';
+    return `<div class="history-item">
+      <div class="history-top">
+        <div>
+          <div class="history-title">${escapeHtml(r.actividad||'Sin actividad')}</div>
+          <div class="history-meta">${escapeHtml(r.fecha||'')} · ${escapeHtml(r.estado||'')} · Valor: ${escapeHtml(String(val))}${escapeHtml(delivery)}</div>
+        </div>
+      </div>
+      <div class="history-actions">
+        <button class="mini" onclick="editRecord('${r.id}',false)">✏️ Editar</button>
+        ${lateBtn}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function escapeHtml(v){
+  return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+
+function selectScoreValue(v){
+  selectedScore=(v===''||v==null)?null:Number(v);
+  document.querySelectorAll('.score').forEach(b=>{
+    b.classList.toggle('sel',selectedScore!==null && Number(b.textContent)===selectedScore);
+  });
+}
+
+function toggleDeliveryDate(){
+  const isLate=$('workStatus').value==='Entrega tardía';
+  $('deliveryDateWrap').classList.toggle('hidden',!isLate);
+  if(isLate && !$('deliveryDate').value) $('deliveryDate').value=new Date().toISOString().slice(0,10);
+}
+$('workStatus').onchange=toggleDeliveryDate;
+
+function editRecord(id,late=false){
+  const r=loadRecords().find(x=>x.id===id);
+  if(!r){alert('No encontré ese registro en el teléfono.');return}
+
+  editReturnContext={
+    activity:$('activity').value,
+    date:$('date').value,
+    group:$('group').value
+  };
+  editingRecordId=id;
+  setStudent(r.codigo);
+
+  $('activity').value=r.actividad||'';
+  $('date').value=r.fecha||new Date().toISOString().slice(0,10);
+  $('participation').value=r.participacion||'';
+  $('conduct').value=r.conducta||'';
+  $('notes').value=r.observaciones||'';
+  $('deliveryDate').value=r.fecha_entrega||'';
+
+  if(late){
+    $('workStatus').value='Entrega tardía';
+    $('deliveryDate').value=new Date().toISOString().slice(0,10);
+    selectScoreValue(null);
+  }else{
+    $('workStatus').value=r.estado||'Realizado';
+    selectScoreValue(r.valor);
+  }
+  toggleDeliveryDate();
+  $('editBanner').classList.remove('hidden');
+  $('cancelEditBtn').classList.remove('hidden');
+  $('saveBtn').textContent='Actualizar registro';
+  $('evaluationCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function cancelEdit(){
+  editingRecordId=null;
+  $('editBanner').classList.add('hidden');
+  $('cancelEditBtn').classList.add('hidden');
+  $('saveBtn').textContent='Guardar y seguir';
+  if(editReturnContext){
+    $('activity').value=editReturnContext.activity;
+    $('date').value=editReturnContext.date;
+    $('group').value=editReturnContext.group;
+    populateStudents();
+  }
+  editReturnContext=null;
+  currentStudent=null;
+  $('studentBox').classList.add('hidden');
+  $('evaluationCard').classList.add('hidden');
+  $('historyCard').classList.add('hidden');
+}
+$('cancelEditBtn').onclick=cancelEdit;
+
 $('manualBtn').onclick=()=>$('manualWrap').classList.toggle('hidden');
 $('loadStudentBtn').onclick=()=>setStudent($('studentSelect').value);
 
@@ -56,18 +172,81 @@ $('scanBtn').onclick=startScanner;$('stopScanBtn').onclick=stopScanner;
 $('saveBtn').onclick=()=>{
  const activity=$('activity').value.trim();if(!activity){alert('Escribe primero la actividad.');return}
  if(!currentStudent){alert('Selecciona un alumno.');return}
- const st=$('workStatus').value;if(st!=='Ausente'&&selectedScore===null){alert('Selecciona una calificación.');return}
- const r=loadRecords(),now=new Date();
- r.push({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),timestamp:now.toISOString(),fecha:$('date').value,
- grupo:currentStudent.group,codigo:currentStudent.code,alumno:currentStudent.name,actividad:activity,valor:st==='Ausente'?'':selectedScore.toFixed(1),
- estado:st,participacion:$('participation').value,conducta:$('conduct').value,observaciones:$('notes').value.trim(),sync_state:'pending'});
- saveRecords(r);renderRecords();
- currentStudent=null;$('studentBox').classList.add('hidden');$('evaluationCard').classList.add('hidden');
- setTimeout(()=>{ if('vibrate' in navigator) navigator.vibrate(50); },20);
+ const st=$('workStatus').value;
+ if(st!=='Ausente'&&selectedScore===null){alert('Selecciona una calificación.');return}
+ if(st==='Entrega tardía'&&!$('deliveryDate').value){alert('Selecciona la fecha de entrega tardía.');return}
+
+ const records=loadRecords(),now=new Date();
+
+ if(editingRecordId){
+   const idx=records.findIndex(r=>r.id===editingRecordId);
+   if(idx<0){alert('No encontré el registro que intentas editar.');return}
+   const original=records[idx];
+   records[idx]={
+     ...original,
+     fecha:$('date').value,
+     grupo:currentStudent.group,
+     codigo:currentStudent.code,
+     alumno:currentStudent.name,
+     actividad:activity,
+     valor:st==='Ausente'?'':selectedScore.toFixed(1),
+     estado:st,
+     participacion:$('participation').value,
+     conducta:$('conduct').value,
+     observaciones:$('notes').value.trim(),
+     fecha_entrega:st==='Entrega tardía' ? $('deliveryDate').value : '',
+     ultima_edicion:now.toISOString(),
+     sync_state:'pending'
+   };
+   saveRecords(records);
+   renderRecords();
+   renderStudentHistory(currentStudent.code);
+
+   editingRecordId=null;
+   $('editBanner').classList.add('hidden');
+   $('cancelEditBtn').classList.add('hidden');
+   $('saveBtn').textContent='Guardar y seguir';
+
+   if(editReturnContext){
+     $('activity').value=editReturnContext.activity;
+     $('date').value=editReturnContext.date;
+     $('group').value=editReturnContext.group;
+     populateStudents();
+   }
+   editReturnContext=null;
+
+   alert('Registro actualizado. Se sincronizará reemplazando la versión anterior.');
+ }else{
+   records.push({
+     id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),
+     timestamp:now.toISOString(),
+     fecha:$('date').value,
+     grupo:currentStudent.group,
+     codigo:currentStudent.code,
+     alumno:currentStudent.name,
+     actividad:activity,
+     valor:st==='Ausente'?'':selectedScore.toFixed(1),
+     estado:st,
+     participacion:$('participation').value,
+     conducta:$('conduct').value,
+     observaciones:$('notes').value.trim(),
+     fecha_entrega:st==='Entrega tardía' ? $('deliveryDate').value : '',
+     ultima_edicion:'',
+     sync_state:'pending'
+   });
+   saveRecords(records);
+   renderRecords();
+ }
+
+ currentStudent=null;
+ $('studentBox').classList.add('hidden');
+ $('evaluationCard').classList.add('hidden');
+ $('historyCard').classList.add('hidden');
+ setTimeout(()=>{if('vibrate' in navigator)navigator.vibrate(50)},20);
 };
 function esc(v){const s=String(v??'');return `"${s.replaceAll('"','""')}"`}
 function dl(n,c,t){const blob=new Blob([c],{type:t}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-$('exportBtn').onclick=()=>{const r=loadRecords();if(!r.length){alert('No hay registros.');return}const hs=['timestamp','fecha','grupo','codigo','alumno','actividad','valor','estado','participacion','conducta','observaciones'];
+$('exportBtn').onclick=()=>{const r=loadRecords();if(!r.length){alert('No hay registros.');return}const hs=['timestamp','fecha','grupo','codigo','alumno','actividad','valor','estado','participacion','conducta','observaciones','id','fecha_entrega','ultima_edicion'];
  const csv='\ufeff'+hs.join(',')+'\n'+r.map(x=>hs.map(h=>esc(x[h])).join(',')).join('\n');dl(`historia_registros_${new Date().toISOString().slice(0,10)}.csv`,csv,'text/csv;charset=utf-8')};
 $('backupBtn').onclick=()=>dl(`historia_respaldo_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(loadRecords(),null,2),'application/json');
 $('clearBtn').onclick=()=>{
@@ -132,7 +311,7 @@ async function sendBatch(records,force=false){
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body:JSON.stringify({
         token,
-        app:'historia-qr-v3',
+        app:'historia-qr-v3.2',
         sent_at:new Date().toISOString(),
         records:toSend
       })
@@ -153,7 +332,7 @@ async function sendBatch(records,force=false){
 }
 $('saveSyncConfigBtn').onclick=saveSyncConfig;
 $('syncBtn').onclick=()=>sendBatch(loadRecords(),false);
-$('resendBtn').onclick=()=>{if(confirm('¿Reenviar todos los registros? El servidor ignora duplicados por ID.'))sendBatch(loadRecords(),true)};
+$('resendBtn').onclick=()=>{if(confirm('¿Reenviar todos los registros? El servidor actualiza registros existentes por ID.'))sendBatch(loadRecords(),true)};
 loadSyncConfig();
 
 renderScores();renderRecords();
