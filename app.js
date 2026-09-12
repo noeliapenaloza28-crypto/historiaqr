@@ -198,6 +198,7 @@ $('saveBtn').onclick=()=>{
      ultima_edicion:now.toISOString(),
      sync_state:'pending'
    };
+   hideTodayView=false;
    saveRecords(records);
    renderRecords();
    renderStudentHistory(currentStudent.code);
@@ -234,6 +235,7 @@ $('saveBtn').onclick=()=>{
      ultima_edicion:'',
      sync_state:'pending'
    });
+   hideTodayView=false;
    saveRecords(records);
    renderRecords();
  }
@@ -249,20 +251,36 @@ function dl(n,c,t){const blob=new Blob([c],{type:t}),a=document.createElement('a
 $('exportBtn').onclick=()=>{const r=loadRecords();if(!r.length){alert('No hay registros.');return}const hs=['timestamp','fecha','grupo','codigo','alumno','actividad','valor','estado','participacion','conducta','observaciones','id','fecha_entrega','ultima_edicion'];
  const csv='\ufeff'+hs.join(',')+'\n'+r.map(x=>hs.map(h=>esc(x[h])).join(',')).join('\n');dl(`historia_registros_${new Date().toISOString().slice(0,10)}.csv`,csv,'text/csv;charset=utf-8')};
 $('backupBtn').onclick=()=>dl(`historia_respaldo_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(loadRecords(),null,2),'application/json');
+// La lista diaria es sólo una vista. El historial completo permanece en localStorage.
+let hideTodayView=false;
+
 $('clearBtn').onclick=()=>{
-  if(confirm('¿Borrar TODOS los registros guardados en este dispositivo?')){
+  hideTodayView=true;
+  renderRecords();
+  alert('Vista del día limpiada. El historial NO se borró y seguirá disponible en Trabajos anteriores.');
+};
+
+$('clearHistoryBtn').onclick=()=>{
+  const phrase=prompt('Esto borrará TODO el historial guardado en este teléfono. Escribe BORRAR para confirmar.');
+  if(phrase==='BORRAR'){
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(OLD_STORAGE_KEY);
     localStorage.setItem(STORAGE_KEY,'[]');
+    hideTodayView=false;
     renderRecords();
     renderSyncCounts();
-    alert('Todos los registros locales fueron eliminados. La configuración de sincronización se conservó.');
+    alert('Historial local eliminado. Los registros ya sincronizados siguen existiendo en Google Sheets.');
   }
 };
+
 function renderRecords(){
-  const r=loadRecords();
-  $('recordCount').textContent=r.length;
-  $('recentRows').innerHTML=r.slice(-10).reverse().map(x=>`<tr><td>${x.fecha}</td><td>${x.alumno}</td><td>${x.actividad}</td><td>${x.valor||'A'}</td></tr>`).join('');
+  const all=loadRecords();
+  const selectedDate=$('date') ? $('date').value : new Date().toISOString().slice(0,10);
+  const visible=all.filter(r=>String(r.fecha||'')===String(selectedDate||''));
+  $('recordCount').textContent=hideTodayView ? 0 : visible.length;
+  $('recentRows').innerHTML=hideTodayView ? '' : visible.slice(-12).reverse().map(x=>
+    `<tr><td>${x.fecha}</td><td>${x.alumno}</td><td>${x.actividad}</td><td>${x.valor||'A'}</td></tr>`
+  ).join('');
   renderSyncCounts();
 }
 
@@ -335,5 +353,6 @@ $('syncBtn').onclick=()=>sendBatch(loadRecords(),false);
 $('resendBtn').onclick=()=>{if(confirm('¿Reenviar todos los registros? El servidor actualiza registros existentes por ID.'))sendBatch(loadRecords(),true)};
 loadSyncConfig();
 
+$('date').addEventListener('change',()=>{hideTodayView=false;renderRecords();});
 renderScores();renderRecords();
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));

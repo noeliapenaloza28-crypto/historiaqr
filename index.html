@@ -34,7 +34,7 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 </style>
 </head>
 <body>
-<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos · v3.2 · edición de entregas</p></header>
+<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos · v3.7 · historial persistente</p></header>
 <main>
 <section class="card"><h2>1. Actividad actual</h2>
 <div class="row"><div><label>Grupo</label><select id="group"><option>3G</option><option>3H</option></select></div>
@@ -94,8 +94,9 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
   <button id="resendBtn" class="secondary" style="margin-top:8px">↻ Reenviar todos</button>
   <div id="syncStatus" class="status hidden"></div>
 </section>
-<section class="card"><h2>Registros</h2><div class="muted"><span id="recordCount">0</span> guardados en este dispositivo.</div>
+<section class="card"><h2>Registros de hoy</h2><div class="muted"><span id="recordCount">0</span> registros de la fecha seleccionada. El historial anterior permanece guardado para edición.</div>
 <div class="actions" style="margin-top:10px"><button id="exportBtn" class="secondary">⬇️ Exportar CSV</button><button id="backupBtn" class="secondary">💾 Respaldo JSON</button></div>
-<button id="clearBtn" class="secondary danger" style="margin-top:8px">Borrar todos los registros</button>
-<div style="overflow:auto;margin-top:12px"><table><thead><tr><th>Fecha</th><th>Alumno</th><th>Actividad</th><th>Valor</th></tr></thead><tbody id="recentRows"></tbody></table></div></section>
+<button id="clearBtn" class="secondary" style="margin-top:8px">🧹 Limpiar vista de hoy</button>
+<button id="clearHistoryBtn" class="secondary danger" style="margin-top:8px">⚠️ Borrar historial local completo</button>
+<div class="muted" style="margin-top:10px">Aquí sólo se muestran los registros de la fecha seleccionada. Los anteriores siguen disponibles en “Trabajos anteriores”.</div><div style="overflow:auto;margin-top:12px"><table><thead><tr><th>Fecha</th><th>Alumno</th><th>Actividad</th><th>Valor</th></tr></thead><tbody id="recentRows"></tbody></table></div></section>
 </main><script src="app.js"></script></body></html>
