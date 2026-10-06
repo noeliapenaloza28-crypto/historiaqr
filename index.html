@@ -30,11 +30,44 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 .late{background:#fff7ed;border-color:#fdba74}
 .edit-banner{padding:10px;border-radius:10px;background:#fff7ed;border:1px solid #fdba74;margin-bottom:10px;font-size:13px;font-weight:700}
 
+
+.history-scroll{
+  max-height:240px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  margin-top:10px;
+  padding-right:6px;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  background:#fafafa;
+  scrollbar-width:thin;
+  scrollbar-color:#9ca3af #f3f4f6;
+}
+.history-scroll::-webkit-scrollbar{width:8px}
+.history-scroll::-webkit-scrollbar-track{background:#f3f4f6;border-radius:10px}
+.history-scroll::-webkit-scrollbar-thumb{background:#9ca3af;border-radius:10px}
+.history-scroll .history-list{margin-top:0;padding:8px}
+.sync-settings{
+  margin-top:10px;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:0 10px;
+  background:#fafafa;
+}
+.sync-settings summary{
+  cursor:pointer;
+  padding:10px 2px;
+  font-weight:700;
+  color:#4b5563;
+  user-select:none;
+}
+.sync-settings[open] summary{border-bottom:1px solid #e5e7eb;margin-bottom:8px}
+
 @media(max-width:500px){.row,.actions{grid-template-columns:1fr}.score-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
-<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 70 alumnos · v3.8 · recuperación desde Sheets</p></header>
+<header><h1>Historia · Registro diario QR</h1><p>3G y 3H · 72 alumnos · v3.7.2</p></header>
 <main>
 <section class="card"><h2>1. Actividad actual</h2>
 <div class="row"><div><label>Grupo</label><select id="group"><option>3G</option><option>3H</option></select></div>
@@ -52,8 +85,10 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 
 <section id="historyCard" class="card hidden">
   <h2 style="margin-top:0">📂 Trabajos anteriores</h2>
-  <div class="muted">Puedes corregir un registro o registrar una entrega tardía sin crear un trabajo duplicado.</div>
-  <div id="historyList" class="history-list"></div>
+  <div class="muted">Revisa o edita registros anteriores sin ocupar toda la pantalla.</div>
+  <div class="history-scroll">
+    <div id="historyList" class="history-list"></div>
+  </div>
 </section>
 
 <section id="evaluationCard" class="card hidden"><h2>3. Evaluación</h2>
@@ -72,18 +107,7 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
 
 <section class="card">
   <h2>☁️ Sincronización con Google Sheets</h2>
-  <div class="muted">
-    Configúrala una sola vez. Sin internet, los registros siguen guardándose en el teléfono.
-    Cuando tengas Wi‑Fi, pulsa <b>Sincronizar ahora</b>.
-  </div>
-
-  <label>URL de la aplicación web de Google Apps Script</label>
-  <input id="syncUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec">
-
-  <label>Clave de sincronización</label>
-  <input id="syncToken" type="password" placeholder="La misma clave configurada en Apps Script">
-
-  <button id="saveSyncConfigBtn" class="secondary" style="margin-top:8px">Guardar configuración</button>
+  <div class="muted">Cuando tengas internet, envía los registros pendientes al concentrado.</div>
 
   <div style="margin-top:12px" class="row">
     <div><div class="muted">Pendientes de enviar</div><div id="pendingCount" style="font-size:28px;font-weight:900">0</div></div>
@@ -91,9 +115,19 @@ video{width:100%;border-radius:12px;background:#000;max-height:330px}table{width
   </div>
 
   <button id="syncBtn" class="primary" style="margin-top:10px">☁️ Sincronizar ahora</button>
-  <button id="recoverBtn" class="secondary" style="margin-top:8px">↻ Recuperar alumnos e historial desde Google Sheets</button>
   <button id="resendBtn" class="secondary" style="margin-top:8px">↻ Reenviar todos</button>
   <div id="syncStatus" class="status hidden"></div>
+
+  <details class="sync-settings">
+    <summary>⚙️ Configuración</summary>
+    <label>URL de Google Apps Script</label>
+    <input id="syncUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+
+    <label>Clave de sincronización</label>
+    <input id="syncToken" type="password" placeholder="Clave configurada en Apps Script">
+
+    <button id="saveSyncConfigBtn" class="secondary" style="margin:8px 0 10px">Guardar configuración</button>
+  </details>
 </section>
 <section class="card"><h2>Registros de hoy</h2><div class="muted"><span id="recordCount">0</span> registros de la fecha seleccionada. El historial anterior permanece guardado para edición.</div>
 <div class="actions" style="margin-top:10px"><button id="exportBtn" class="secondary">⬇️ Exportar CSV</button><button id="backupBtn" class="secondary">💾 Respaldo JSON</button></div>
