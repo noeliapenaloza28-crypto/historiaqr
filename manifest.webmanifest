@@ -1,5 +1,5 @@
 {
-  "name": "Historia - Registro QR 3G y 3H · historial persistente",
+  "name": "Historia - Registro QR · recuperación desde Sheets",
   "short_name": "Historia QR",
   "start_url": "./index.html",
   "display": "standalone",

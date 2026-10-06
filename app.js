@@ -1,7 +1,24 @@
-const STUDENTS = [{"code": "3G-01", "group": "3G", "name": "AGUILAR PLACIDO MARIA FERNANDA"}, {"code": "3G-02", "group": "3G", "name": "ANGELES VALDEZ VICTORIA JULISA"}, {"code": "3G-03", "group": "3G", "name": "AVALOS CASTILLO DEREK"}, {"code": "3G-04", "group": "3G", "name": "AYALA MONDRAGON DORYAN MICHEL"}, {"code": "3G-05", "group": "3G", "name": "CAMACHO MACIAS WILLIAM URIEL"}, {"code": "3G-06", "group": "3G", "name": "CAMPOS MOSSO XIMENA ZOE"}, {"code": "3G-07", "group": "3G", "name": "CASTILLO PIMENTEL JUAN ELIAS"}, {"code": "3G-08", "group": "3G", "name": "CASTRO ZAYAS JOSE EMILIANO"}, {"code": "3G-09", "group": "3G", "name": "COLIN REYES LIZETH ABIGAIL"}, {"code": "3G-10", "group": "3G", "name": "CONTRERAS MORAN CARLOS EMILIO"}, {"code": "3G-11", "group": "3G", "name": "CRUZ CONTRERAS SANTIAGO"}, {"code": "3G-12", "group": "3G", "name": "DE LEON GARCIA SOPHIA ELIZABETH"}, {"code": "3G-13", "group": "3G", "name": "DIAZ ARCOS INGRID ITZAYETZI"}, {"code": "3G-14", "group": "3G", "name": "DIAZ CHAVEZ ARTURO"}, {"code": "3G-15", "group": "3G", "name": "FLORES TAPIA IVAN ARTURO"}, {"code": "3G-16", "group": "3G", "name": "GONZALEZ UNBE ALEJANDRO"}, {"code": "3G-17", "group": "3G", "name": "HIDALGO GONZALEZ GABRIEL"}, {"code": "3G-18", "group": "3G", "name": "JAIME GARCIA DANIELA"}, {"code": "3G-19", "group": "3G", "name": "JIMENEZ GALVAN GLORIA ITZA"}, {"code": "3G-20", "group": "3G", "name": "MARTINEZ ORTIZ LUZ CLARITA"}, {"code": "3G-21", "group": "3G", "name": "NOLASCO FERNANDEZ HAILE ALAIN"}, {"code": "3G-22", "group": "3G", "name": "OSORIO VILLICANA ANA LAURA"}, {"code": "3G-23", "group": "3G", "name": "PERALTA DIAZ NATALIA"}, {"code": "3G-24", "group": "3G", "name": "REYES CARCIA JOSE DITTER"}, {"code": "3G-25", "group": "3G", "name": "RODEA CIRA LUNA YOHUALLI"}, {"code": "3G-26", "group": "3G", "name": "RODRIGUEZ ESTRADA GAEL ALESSANDRO"}, {"code": "3G-27", "group": "3G", "name": "ROLDAN BEJARANO MELISA"}, {"code": "3G-28", "group": "3G", "name": "ROMERO MARTINEZ MARIEL AKETZALLI"}, {"code": "3G-29", "group": "3G", "name": "SANCHEZ MORALES SKIRLA SKARLETH"}, {"code": "3G-30", "group": "3G", "name": "VALDES ROMERO XIMENA"}, {"code": "3G-31", "group": "3G", "name": "VALDEZ BERMUDEZ HECTOR DANIEL"}, {"code": "3G-32", "group": "3G", "name": "VALENCIA DE LA CRUZ JOSEPH ALEXANDER"}, {"code": "3G-33", "group": "3G", "name": "VALTIERRA CHAVEZ MAXIMILIANO"}, {"code": "3G-34", "group": "3G", "name": "VARGAS SANCHEZ SHARON VALERIA"}, {"code": "3G-35", "group": "3G", "name": "VAZQUEZ PARRA MEREDITH"}, {"code": "3H-01", "group": "3H", "name": "DE LEON MORALES LUIS LEONEL"}, {"code": "3H-02", "group": "3H", "name": "ALCALA LEON ROSA IVONNE"}, {"code": "3H-03", "group": "3H", "name": "ANTONIO GABRIEL NAYIBET ZURISADAY"}, {"code": "3H-04", "group": "3H", "name": "ARCE VARGAS STEPHANIA"}, {"code": "3H-05", "group": "3H", "name": "ARELLANO CONTRERAS FATIMA AILYN"}, {"code": "3H-06", "group": "3H", "name": "DIAZ GARDUNO ARLETTE JANETH"}, {"code": "3H-07", "group": "3H", "name": "GARCIA LOPEZ EDUARDO SANTIAGO"}, {"code": "3H-08", "group": "3H", "name": "GARCIA MADERA XIMENA RUBY"}, {"code": "3H-09", "group": "3H", "name": "GARRIDO BERNAL SOFIA"}, {"code": "3H-10", "group": "3H", "name": "GONZALEZ LEE XIMENA GUADALUPE"}, {"code": "3H-11", "group": "3H", "name": "GONZALEZ VALLE YESENIA DENISSE"}, {"code": "3H-12", "group": "3H", "name": "GRANADOS DE LA CRUZ IKER EZEQUIEL"}, {"code": "3H-13", "group": "3H", "name": "HERNANDEZ ALVAREZ ABRIL"}, {"code": "3H-14", "group": "3H", "name": "ISIDRO BERMUDEZ ABRIL NAYARA"}, {"code": "3H-15", "group": "3H", "name": "JIMENEZ VELEZ DANTE"}, {"code": "3H-16", "group": "3H", "name": "JUAN SEGUNDO MARIA DE LOS ANGELES"}, {"code": "3H-17", "group": "3H", "name": "MARTINEZ LOPEZ DULCE CAMILA"}, {"code": "3H-18", "group": "3H", "name": "MENDOZA CRUZ JONATHAN MICHELLE"}, {"code": "3H-19", "group": "3H", "name": "MORALES GARCIA SOFIA FERNANDA"}, {"code": "3H-20", "group": "3H", "name": "MUNOZ GARCIA IKER RAFAEL"}, {"code": "3H-21", "group": "3H", "name": "ORTA TRUJILLO COLE JEFF"}, {"code": "3H-22", "group": "3H", "name": "ORTIZ GUADARRAMA RODRIGO"}, {"code": "3H-23", "group": "3H", "name": "PALMA HERNANDEZ ALIKA EVOLET"}, {"code": "3H-24", "group": "3H", "name": "PENA TORRES BRYAN MATEO"}, {"code": "3H-25", "group": "3H", "name": "REYES BANDA ARATH ITZAE"}, {"code": "3H-26", "group": "3H", "name": "RIVERA AGUIRRE IAN MATTEO"}, {"code": "3H-27", "group": "3H", "name": "ROMERO LAGUNAS GABRIEL ALEJANDRO"}, {"code": "3H-28", "group": "3H", "name": "RUIZ VILLAFANA XIMENA"}, {"code": "3H-29", "group": "3H", "name": "SALAZAR MORENO SANTIAGO"}, {"code": "3H-30", "group": "3H", "name": "TAPIA VAZQUEZ FERNANDO AGUSTIN"}, {"code": "3H-31", "group": "3H", "name": "URIBE GARCIA LUIS JESUS"}, {"code": "3H-32", "group": "3H", "name": "VI-CHIS FLORENCIO JOCELYN STEPHANIA"}, {"code": "3H-33", "group": "3H", "name": "ZARZA SANTILLAN MICHEL EMILIANO"}, {"code": "3H-34", "group": "3H", "name": "GOMORA MARTINEZ MARIA JOSE"}, {"code": "3H-35", "group": "3H", "name": "ESQUIVEL CERA FATIMA SELENE"}, {"code": "3H-36", "group": "3H", "name": "LUCIO MARROQUIN EDUARDO ELEAZAR"}, {"code": "3H-37", "group": "3H", "name": "VENTURA GALAN JONATHAN SEBASTIAN"}];
+let STUDENTS = [{"code": "3G-01", "group": "3G", "name": "AGUILAR PLACIDO MARIA FERNANDA"}, {"code": "3G-02", "group": "3G", "name": "ANGELES VALDEZ VICTORIA JULISA"}, {"code": "3G-03", "group": "3G", "name": "AVALOS CASTILLO DEREK"}, {"code": "3G-04", "group": "3G", "name": "AYALA MONDRAGON DORYAN MICHEL"}, {"code": "3G-05", "group": "3G", "name": "CAMACHO MACIAS WILLIAM URIEL"}, {"code": "3G-06", "group": "3G", "name": "CAMPOS MOSSO XIMENA ZOE"}, {"code": "3G-07", "group": "3G", "name": "CASTILLO PIMENTEL JUAN ELIAS"}, {"code": "3G-08", "group": "3G", "name": "CASTRO ZAYAS JOSE EMILIANO"}, {"code": "3G-09", "group": "3G", "name": "COLIN REYES LIZETH ABIGAIL"}, {"code": "3G-10", "group": "3G", "name": "CONTRERAS MORAN CARLOS EMILIO"}, {"code": "3G-11", "group": "3G", "name": "CRUZ CONTRERAS SANTIAGO"}, {"code": "3G-12", "group": "3G", "name": "DE LEON GARCIA SOPHIA ELIZABETH"}, {"code": "3G-13", "group": "3G", "name": "DIAZ ARCOS INGRID ITZAYETZI"}, {"code": "3G-14", "group": "3G", "name": "DIAZ CHAVEZ ARTURO"}, {"code": "3G-15", "group": "3G", "name": "FLORES TAPIA IVAN ARTURO"}, {"code": "3G-16", "group": "3G", "name": "GONZALEZ UNBE ALEJANDRO"}, {"code": "3G-17", "group": "3G", "name": "HIDALGO GONZALEZ GABRIEL"}, {"code": "3G-18", "group": "3G", "name": "JAIME GARCIA DANIELA"}, {"code": "3G-19", "group": "3G", "name": "JIMENEZ GALVAN GLORIA ITZA"}, {"code": "3G-20", "group": "3G", "name": "MARTINEZ ORTIZ LUZ CLARITA"}, {"code": "3G-21", "group": "3G", "name": "NOLASCO FERNANDEZ HAILE ALAIN"}, {"code": "3G-22", "group": "3G", "name": "OSORIO VILLICANA ANA LAURA"}, {"code": "3G-23", "group": "3G", "name": "PERALTA DIAZ NATALIA"}, {"code": "3G-24", "group": "3G", "name": "REYES CARCIA JOSE DITTER"}, {"code": "3G-25", "group": "3G", "name": "RODEA CIRA LUNA YOHUALLI"}, {"code": "3G-26", "group": "3G", "name": "RODRIGUEZ ESTRADA GAEL ALESSANDRO"}, {"code": "3G-27", "group": "3G", "name": "ROLDAN BEJARANO MELISA"}, {"code": "3G-28", "group": "3G", "name": "ROMERO MARTINEZ MARIEL AKETZALLI"}, {"code": "3G-29", "group": "3G", "name": "SANCHEZ MORALES SKIRLA SKARLETH"}, {"code": "3G-30", "group": "3G", "name": "VALDES ROMERO XIMENA"}, {"code": "3G-31", "group": "3G", "name": "VALDEZ BERMUDEZ HECTOR DANIEL"}, {"code": "3G-32", "group": "3G", "name": "VALENCIA DE LA CRUZ JOSEPH ALEXANDER"}, {"code": "3G-33", "group": "3G", "name": "VALTIERRA CHAVEZ MAXIMILIANO"}, {"code": "3G-34", "group": "3G", "name": "VARGAS SANCHEZ SHARON VALERIA"}, {"code": "3G-35", "group": "3G", "name": "VAZQUEZ PARRA MEREDITH"}, {"code": "3H-01", "group": "3H", "name": "DE LEON MORALES LUIS LEONEL"}, {"code": "3H-02", "group": "3H", "name": "ALCALA LEON ROSA IVONNE"}, {"code": "3H-03", "group": "3H", "name": "ANTONIO GABRIEL NAYIBET ZURISADAY"}, {"code": "3H-04", "group": "3H", "name": "ARCE VARGAS STEPHANIA"}, {"code": "3H-05", "group": "3H", "name": "ARELLANO CONTRERAS FATIMA AILYN"}, {"code": "3H-06", "group": "3H", "name": "DIAZ GARDUNO ARLETTE JANETH"}, {"code": "3H-07", "group": "3H", "name": "GARCIA LOPEZ EDUARDO SANTIAGO"}, {"code": "3H-08", "group": "3H", "name": "GARCIA MADERA XIMENA RUBY"}, {"code": "3H-09", "group": "3H", "name": "GARRIDO BERNAL SOFIA"}, {"code": "3H-10", "group": "3H", "name": "GONZALEZ LEE XIMENA GUADALUPE"}, {"code": "3H-11", "group": "3H", "name": "GONZALEZ VALLE YESENIA DENISSE"}, {"code": "3H-12", "group": "3H", "name": "GRANADOS DE LA CRUZ IKER EZEQUIEL"}, {"code": "3H-13", "group": "3H", "name": "HERNANDEZ ALVAREZ ABRIL"}, {"code": "3H-14", "group": "3H", "name": "ISIDRO BERMUDEZ ABRIL NAYARA"}, {"code": "3H-15", "group": "3H", "name": "JIMENEZ VELEZ DANTE"}, {"code": "3H-16", "group": "3H", "name": "JUAN SEGUNDO MARIA DE LOS ANGELES"}, {"code": "3H-17", "group": "3H", "name": "MARTINEZ LOPEZ DULCE CAMILA"}, {"code": "3H-18", "group": "3H", "name": "MENDOZA CRUZ JONATHAN MICHELLE"}, {"code": "3H-19", "group": "3H", "name": "MORALES GARCIA SOFIA FERNANDA"}, {"code": "3H-20", "group": "3H", "name": "MUNOZ GARCIA IKER RAFAEL"}, {"code": "3H-21", "group": "3H", "name": "ORTA TRUJILLO COLE JEFF"}, {"code": "3H-22", "group": "3H", "name": "ORTIZ GUADARRAMA RODRIGO"}, {"code": "3H-23", "group": "3H", "name": "PALMA HERNANDEZ ALIKA EVOLET"}, {"code": "3H-24", "group": "3H", "name": "PENA TORRES BRYAN MATEO"}, {"code": "3H-25", "group": "3H", "name": "REYES BANDA ARATH ITZAE"}, {"code": "3H-26", "group": "3H", "name": "RIVERA AGUIRRE IAN MATTEO"}, {"code": "3H-27", "group": "3H", "name": "ROMERO LAGUNAS GABRIEL ALEJANDRO"}, {"code": "3H-28", "group": "3H", "name": "RUIZ VILLAFANA XIMENA"}, {"code": "3H-29", "group": "3H", "name": "SALAZAR MORENO SANTIAGO"}, {"code": "3H-30", "group": "3H", "name": "TAPIA VAZQUEZ FERNANDO AGUSTIN"}, {"code": "3H-31", "group": "3H", "name": "URIBE GARCIA LUIS JESUS"}, {"code": "3H-32", "group": "3H", "name": "VI-CHIS FLORENCIO JOCELYN STEPHANIA"}, {"code": "3H-33", "group": "3H", "name": "ZARZA SANTILLAN MICHEL EMILIANO"}, {"code": "3H-34", "group": "3H", "name": "GOMORA MARTINEZ MARIA JOSE"}, {"code": "3H-35", "group": "3H", "name": "ESQUIVEL CERA FATIMA SELENE"}];
 let currentStudent=null,selectedScore=null,stream=null,scanTimer=null;
 let editingRecordId=null;
 let editReturnContext=null;
+
+const ROSTER_STORAGE_KEY='historia_students_v1';
+function loadStoredStudents(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(ROSTER_STORAGE_KEY)||'[]');
+    if(Array.isArray(saved) && saved.length) STUDENTS=saved;
+  }catch{}
+}
+function saveStudents(list){
+  if(Array.isArray(list) && list.length){
+    STUDENTS=list;
+    localStorage.setItem(ROSTER_STORAGE_KEY,JSON.stringify(list));
+    populateStudents();
+  }
+}
+loadStoredStudents();
+
 const $=id=>document.getElementById(id);
 $('date').value=new Date().toISOString().slice(0,10);
 
@@ -351,6 +368,65 @@ async function sendBatch(records,force=false){
 $('saveSyncConfigBtn').onclick=saveSyncConfig;
 $('syncBtn').onclick=()=>sendBatch(loadRecords(),false);
 $('resendBtn').onclick=()=>{if(confirm('¿Reenviar todos los registros? El servidor actualiza registros existentes por ID.'))sendBatch(loadRecords(),true)};
+
+// ---- Recuperación desde Google Sheets ----
+let recoveryTimeout=null;
+function recoverFromSheets(){
+  const url=localStorage.getItem(SYNC_URL_KEY)||'';
+  const token=localStorage.getItem(SYNC_TOKEN_KEY)||'';
+  if(!url || !token){showSyncStatus('Primero guarda la URL y la clave de sincronización.');return}
+  if(!navigator.onLine){showSyncStatus('Necesitas internet para recuperar desde Google Sheets.');return}
+
+  $('recoverBtn').disabled=true;
+  $('recoverBtn').textContent='Recuperando…';
+  showSyncStatus('Consultando alumnos e historial en Google Sheets…');
+
+  const old=document.getElementById('historiaRecoveryScript');
+  if(old) old.remove();
+
+  const src=url+(url.includes('?')?'&':'?')+
+    'action=bootstrap&token='+encodeURIComponent(token)+
+    '&callback=historiaRecoveryCallback&_='+Date.now();
+
+  const s=document.createElement('script');
+  s.id='historiaRecoveryScript';
+  s.src=src;
+  s.onerror=()=>finishRecovery('No pude leer Google Sheets. Revisa tu conexión o la implementación.');
+  document.body.appendChild(s);
+
+  recoveryTimeout=setTimeout(()=>finishRecovery('La recuperación tardó demasiado. Intenta otra vez.'),20000);
+}
+function finishRecovery(msg){
+  if(recoveryTimeout) clearTimeout(recoveryTimeout);
+  recoveryTimeout=null;
+  $('recoverBtn').disabled=false;
+  $('recoverBtn').textContent='↻ Recuperar alumnos e historial desde Google Sheets';
+  showSyncStatus(msg);
+}
+window.historiaRecoveryCallback=function(payload){
+  if(!payload || !payload.ok){
+    finishRecovery('Google Sheets respondió con error: '+((payload&&payload.error)||'desconocido'));
+    return;
+  }
+  if(Array.isArray(payload.students) && payload.students.length) saveStudents(payload.students);
+
+  const local=loadRecords();
+  const map=new Map(local.map(r=>[String(r.id||''),r]));
+  (payload.records||[]).forEach(r=>{
+    const id=String(r.id||'');
+    if(!id) return;
+    map.set(id,{...(map.get(id)||{}),...r,sync_state:'sent'});
+  });
+  const merged=Array.from(map.values()).filter(r=>r.id);
+  saveRecords(merged);
+  renderRecords();
+  renderSyncCounts();
+  if(currentStudent) renderStudentHistory(currentStudent.code);
+
+  finishRecovery(`Recuperación completa: ${payload.students?.length||0} alumno(s) y ${payload.records?.length||0} registro(s).`);
+};
+$('recoverBtn').onclick=recoverFromSheets;
+
 loadSyncConfig();
 
 $('date').addEventListener('change',()=>{hideTodayView=false;renderRecords();});
